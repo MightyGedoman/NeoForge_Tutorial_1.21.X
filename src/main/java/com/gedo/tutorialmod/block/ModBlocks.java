@@ -22,27 +22,23 @@ public class ModBlocks {
             DeferredRegister.createBlocks(TutorialMod.MOD_ID);
 
     public static final DeferredBlock<Block> BISMUTH_BLOCK = registerBlock("bismuth_block",
-            () -> new Block(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
-
-    //public static final DeferredBlock<Block> BISMUTH_BLOCK = BLOCKS.registerBlock("bismuth_block", Block::new, new Block.Properties());
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .strength(4f).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        regsiterblockItem(name, toReturn);
+        registerBlockItem(name, toReturn);
         return toReturn;
-    }
-
-    private  static <T extends Block> void regsiterblockItem(String name, DeferredBlock<T> block) {
-        Moditems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         Moditems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID,name)))));
-
     }
 
-    public static void  register(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+
+
+        public static void register(IEventBus eventBus) {
+            BLOCKS.register(eventBus);
+        }
     }
-}
