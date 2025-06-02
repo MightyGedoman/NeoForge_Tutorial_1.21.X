@@ -1,5 +1,6 @@
 package com.gedo.tutorialmod;
 
+import com.gedo.tutorialmod.block.ModBlocks;
 import com.gedo.tutorialmod.item.Moditems;
 import org.slf4j.Logger;
 
@@ -45,6 +46,7 @@ public class TutorialMod
         NeoForge.EVENT_BUS.register(this);
 
         Moditems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
