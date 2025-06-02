@@ -33,7 +33,7 @@ public class ModBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        Moditems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TutorialMod.MOD_ID,name)))));
+        Moditems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
 
